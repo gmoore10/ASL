@@ -1,0 +1,26 @@
+{
+  "name": "asl",
+  "version": "1.0.0",
+  "description": "Hello",
+  "main": "1",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmoore10/ASL.git"
+  },
+  "keywords": [
+    "hello",
+    "app"
+  ],
+  "author": "Garrett Moore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gmoore10/ASL/issues"
+  },
+  "homepage": "https://github.com/gmoore10/ASL#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
