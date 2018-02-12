@@ -7,7 +7,13 @@ block content
       label.col-sm-2.col-form-label(for="name") Name
       .col-lg-10
         input.form-control(type="text", name="name", id="nameInput", placeholder="Name")
+        if errors
+          each error in errors
+            .form-control-feedback!=error.param=='name'?error.msg:''
       label.col-sm-2.col-form-label(for="emailAddress") Email
       .col-lg-10
         input.form-control(type="email", name="email", id="emailInput", placeholder="name@example.com")
+        if errors
+          each error in errors
+            .form-control-feedback!=error.param=='email'?error.msg:''
       button.btn.btn-primary(type="submit") Register

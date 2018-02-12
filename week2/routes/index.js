@@ -33,10 +33,26 @@ router.get('/register', function(req, res, next) {
 
 /* POST register page. */
 router.post('/register/submit', function(req, res, next) {
+  req.checkBody("name", "Please only enter alpha characters.").isAlpha();
+  req.checkBody("email", "Please enter a valid email address").isEmail();
   var name = req.body.name;
   var email = req.body.email;
-  console.log(name, email);
-  res.redirect("/register/success?name=" + name + "&email=" + email);
+
+  var errors = req.validationErrors();
+
+  if(errors) {
+    errors.forEach(element => {
+        console.log(Object.keys(element));
+    });
+    res.render('register', { 
+      title: 'Register',
+      navitems: navitems,
+      errors: errors
+    });
+    return;
+  } else {
+    res.redirect("/register/success?name=" + name + "&email=" + email);
+  }
 });
 
 /* GET register/success page. */
