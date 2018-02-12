@@ -10,17 +10,4 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
     script(src='/bootstrap/js/bootstrap.min.js')
   body
-    nav.navbar.navbar-expand-lg.navbar-light.bg-faded(role="navigation")
-      button.navbar-toggler.navbar-toggler-right(type="button", data-toggle="collapse", data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent", aria-expanded="false" aria-label="Toggle Navigation")
-        span.navbar-toggler-icon
-      a.navbar-brand(href="/") Week 2 Project
-      div.collapse.navbar-collapse(id="navbarSupportedContent")
-        ul.navbar-nav.mr-auto
-          each item in navitems
-            li.nav-item(class=title==item.content?'active':undefined)
-              a.nav-link(href=item.link)=item.content
-        form.form-inline.my-2.my-lg-0
-          input.form-control.mr-sm-2(type="text", placeholder="Username", aria-label="Username")
-          input.form-control.mr-sm-2(type="password", placeholder="Password", aria-label="Password")
-          button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Log In
     block content

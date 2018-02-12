@@ -16,4 +16,10 @@ block content
         if errors
           each error in errors
             .form-control-feedback!=error.param=='email'?error.msg:''
+      label.col-sm-2.col-form-label(for="sampleFile") File Upload
+      .col-lg-10
+        input.form-control(type="file", name="sampleFile", id="sampleFile")
+        if errors
+          each error in errors
+            .form-control-feedback!=error.param=='file'?error.msg:''
       button.btn.btn-primary(type="submit") Register

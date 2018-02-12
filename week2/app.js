@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
+var expressUploader = require('express-fileupload');
+var bb = require('express-busboy');
 
 var index = require('./routes/index');
 
@@ -20,8 +22,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
+app.use(expressUploader());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+bb.extend(app, {
+    upload: true,
+    path: path.join(__dirname, 'uploads'),
+    allowedPath: /^\/register\/submit$/
+});
 
 app.use('/', index);
 

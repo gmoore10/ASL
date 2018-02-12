@@ -35,10 +35,26 @@ router.get('/register', function(req, res, next) {
 router.post('/register/submit', function(req, res, next) {
   req.checkBody("name", "Please only enter alpha characters.").isAlpha();
   req.checkBody("email", "Please enter a valid email address").isEmail();
-  var name = req.body.name;
-  var email = req.body.email;
 
   var errors = req.validationErrors();
+  
+  var file;
+  console.log(req.files);
+
+  // if(!req.files) {
+  //   errors.push({path: '/register/submit', param: 'file', msg: 'Please upload a valid PDF file.'})
+  //   file = req.files.sampleFile;
+  // } else {
+    
+  //   file.mv('/public/uploads/file.pdf', function(err) {
+  //     if (err) {
+  
+  //     }
+  //   })
+  //  console.log(req.files);
+  //  }
+  var name = req.body.name;
+  var email = req.body.email;
 
   if(errors) {
     errors.forEach(element => {
