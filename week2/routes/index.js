@@ -31,4 +31,22 @@ router.get('/register', function(req, res, next) {
   });
 });
 
+/* POST register page. */
+router.post('/register/submit', function(req, res, next) {
+  var name = req.body.name;
+  var email = req.body.email;
+  console.log(name, email);
+  res.redirect("/register/success?name=" + name + "&email=" + email);
+});
+
+/* GET register/success page. */
+router.get('/register/success', function(req, res, next) {
+  console.log(req);
+  res.render('register/success', { 
+    title: 'Registration Successful!',
+    navitems: navitems,
+    params: req.query
+  });
+});
+
 module.exports = router;
