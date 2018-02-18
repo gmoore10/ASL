@@ -1,6 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
+var Sequelize = require("sequelize");
+const sequelize = new Sequelize("fruits", "root", "root", {
+  host: "localhost",
+  dialect: "mysql"
+})
+
+const User = sequelize.define("user", {
+  "name": { type: Sequelize.STRING },
+  "lastname": { type: Sequelize.STRING }
+})
+
 var navitems = [
   {link: '/', content: 'Home'},
   {link: '/users', content: 'Users'},
@@ -17,10 +28,13 @@ router.get('/', function(req, res, next) {
 
 /* GET users page. */
 router.get('/users', function(req, res, next) {
-  res.render('users', { 
-    title: 'Users',
-    navitems: navitems
-  });
+  users = User.findAll().then(users=>{
+    res.render('users', {
+      users: users,
+      title: 'Users',
+      navitems: navitems
+    });
+  })
 });
 
 /* GET register page. */
@@ -41,18 +55,6 @@ router.post('/register/submit', function(req, res, next) {
   var file;
   console.log(req.files);
 
-  // if(!req.files) {
-  //   errors.push({path: '/register/submit', param: 'file', msg: 'Please upload a valid PDF file.'})
-  //   file = req.files.sampleFile;
-  // } else {
-    
-  //   file.mv('/public/uploads/file.pdf', function(err) {
-  //     if (err) {
-  
-  //     }
-  //   })
-  //  console.log(req.files);
-  //  }
   var name = req.body.name;
   var email = req.body.email;
 
