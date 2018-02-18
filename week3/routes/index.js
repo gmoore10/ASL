@@ -37,6 +37,26 @@ router.get('/users', function(req, res, next) {
   })
 });
 
+/* GET users/create page. */
+router.get('/users/create', function(req, res, next) {
+  console.log(req.params.id)
+  res.render('users/create', {
+    title: 'Create User',
+    navitems: navitems
+  });
+});
+
+/* POST users/create page. */
+router.post('/users/create', function(req, res, next) {
+  console.log(req.body)
+  users = User.create({
+      name: req.body.name,
+      lastname: req.body.lastName
+    }).then(user=>{
+      res.redirect("/users");
+    });
+});
+
 /* GET users/edit page. */
 router.get('/users/edit/:id', function(req, res, next) {
   console.log(req.params.id)
@@ -50,6 +70,34 @@ router.get('/users/edit/:id', function(req, res, next) {
       title: 'Edit User',
       navitems: navitems
     });
+  })
+});
+
+/* POST users/edit page. */
+router.post('/users/edit', function(req, res, next) {
+  users = User.update(
+  {
+    name: req.body.name,
+    lastname: req.body.lastname
+  },
+  {
+    where: {
+      id: req.body.id
+    }
+  }).then(user=>{
+    res.redirect("/users");
+  })
+});
+
+/* GET users/delete page. */
+router.get('/users/delete/:id', function(req, res, next) {
+  users = User.destroy(
+  {
+    where: {
+      id: req.params.id
+    }
+  }).then(user=>{
+    res.redirect("/users");
   })
 });
 
