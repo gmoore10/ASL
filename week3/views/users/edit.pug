@@ -7,9 +7,9 @@ block content
     form(action="/users/edit", method="post")
       input(type="hidden", name="id" value=user.id)
       .form-group.row
-        label.col-sm-2.col-form-label(for="name") Name
+        label.col-sm-2.col-form-label(for="firstName") Name
         .col-lg-10
-          input.form-control(type="text", name="name", id="nameInput", placeholder="Name" value=user.name)
+          input.form-control(type="text", name="firstName", id="nameInput", placeholder="Name" value=user.firstname)
         label.col-sm-2.col-form-label(for="lastName") Last Name
         .col-lg-10
           input.form-control(type="text", name="lastName", id="lastNameInput", placeholder="Last Name" value=user.lastname)

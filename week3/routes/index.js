@@ -8,7 +8,7 @@ const sequelize = new Sequelize("fruits", "root", "root", {
 })
 
 const User = sequelize.define("user", {
-  "name": { type: Sequelize.STRING },
+  "firstname": { type: Sequelize.STRING },
   "lastname": { type: Sequelize.STRING }
 })
 
@@ -50,7 +50,7 @@ router.get('/users/create', function(req, res, next) {
 router.post('/users/create', function(req, res, next) {
   console.log(req.body)
   users = User.create({
-      name: req.body.name,
+      firstname: req.body.firstName,
       lastname: req.body.lastName
     }).then(user=>{
       res.redirect("/users");
@@ -77,8 +77,8 @@ router.get('/users/edit/:id', function(req, res, next) {
 router.post('/users/edit', function(req, res, next) {
   users = User.update(
   {
-    name: req.body.name,
-    lastname: req.body.lastname
+    firstname: req.body.firstName,
+    lastname: req.body.lastName
   },
   {
     where: {
