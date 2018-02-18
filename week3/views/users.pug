@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  a.btn.btn-primary(href="/users/create") Add User
+  if users && users.length >= 1
+    table.table.table-bordered.table-hover.table-sm
+      caption List of users
+      thead.thead-light
+        tr
+          th(scope="col") #
+          th(scope="col") First Name
+          th(scope="col") Last Name
+          th(scope="col") Options
+      each user in users
+        tbody
+          tr
+            th(scope="row") #{user.id}
+            td #{user.firstname}
+            td #{user.lastname}
+            td 
+              a(href="/users/edit/" + user.id) Edit
+              span &nbsp;|&nbsp;
+              a(href="/users/delete/" + user.id) Delete
+  else
+    p There are no users in the database.

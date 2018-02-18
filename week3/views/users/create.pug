@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(action="/users/create", method="post")
+      input(type="hidden", name="id")
+      .form-group.row
+        label.col-sm-2.col-form-label(for="firstName") Name
+        .col-lg-10
+          input.form-control(type="text", name="firstName", id="firstNameInput", placeholder="First Name")
+        label.col-sm-2.col-form-label(for="lastName") Last Name
+        .col-lg-10
+          input.form-control(type="text", name="lastName", id="lastNameInput", placeholder="Last Name")
+      button.btn.btn-primary(type="submit") Submit
