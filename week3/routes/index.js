@@ -37,6 +37,17 @@ router.get('/users', function(req, res, next) {
   })
 });
 
+/* GET users/edit page. */
+router.get('/users/edit/:id', function(req, res, next) {
+  users = User.find(req.id).then(user=>{
+    res.render('users/edit', {
+      user: user,
+      title: 'Edit User',
+      navitems: navitems
+    });
+  })
+});
+
 /* GET register page. */
 router.get('/register', function(req, res, next) {
   res.render('register', { 

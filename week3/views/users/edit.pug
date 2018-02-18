@@ -1,0 +1,8 @@
+block content
+  h1= title
+  p Welcome to #{title}
+  a.btn.btn-primary(href="/users/add") Add User
+  if user
+    div #{user.id}
+    div #{user.name}
+    div #{user.lastname}

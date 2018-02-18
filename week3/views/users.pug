@@ -3,3 +3,23 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  a.btn.btn-primary(href="/users/add") Add User
+  if users
+    table.table.table-bordered.table-hover.table-sm
+      caption List of users
+      thead.thead-light
+        tr
+          th(scope="col") #
+          th(scope="col") Name
+          th(scope="col") Last Name
+          th(scope="col") Options
+      each user in users
+        tbody
+          tr
+            th(scope="row") #{user.id}
+            td #{user.name}
+            td #{user.lastname}
+            td 
+              a(href="/users/edit/" + user.id) Edit
+              span &nbsp;|&nbsp;
+              a(href="/users/delete/" + user.id) Delete
