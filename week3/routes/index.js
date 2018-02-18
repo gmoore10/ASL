@@ -39,7 +39,12 @@ router.get('/users', function(req, res, next) {
 
 /* GET users/edit page. */
 router.get('/users/edit/:id', function(req, res, next) {
-  users = User.find(req.id).then(user=>{
+  console.log(req.params.id)
+  users = User.find({
+    where: {
+      id: req.params.id
+    }
+  }).then(user=>{
     res.render('users/edit', {
       user: user,
       title: 'Edit User',

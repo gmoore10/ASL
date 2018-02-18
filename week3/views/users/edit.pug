@@ -1,8 +1,17 @@
+extends ../layout
+
 block content
   h1= title
   p Welcome to #{title}
-  a.btn.btn-primary(href="/users/add") Add User
   if user
-    div #{user.id}
-    div #{user.name}
-    div #{user.lastname}
+    form(action="/users/edit", method="post")
+    .form-group.row
+      label.col-sm-2.col-form-label(for="name") Name
+      .col-lg-10
+        input.form-control(type="text", name="name", id="nameInput", placeholder="Name" value=user.name)
+      label.col-sm-2.col-form-label(for="lastName") Last Name
+      .col-lg-10
+        input.form-control(type="text", name="lastName", id="lastNameInput", placeholder="Last Name" value=user.lastname)
+      button.btn.btn-primary(type="submit") Edit
+  else
+    div User Not Found
