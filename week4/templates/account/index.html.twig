@@ -1,0 +1,55 @@
+{# templates/default/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h2>Account</h2>
+    <span>Welcome, {{givenName}}</span><br />
+    <span>Email: {{email}}</span>
+
+    <div id="chart"></div>
+    <script>
+        function createChart() {
+            $("#chart").kendoChart({
+                title: {
+                    position: "bottom",
+                    text: "Google Drive Space Usage"
+                },
+                legend: {
+                    visible: false
+                },
+                chartArea: {
+                    background: ""
+                },
+                seriesDefaults: {
+                    labels: {
+                        visible: true,
+                        background: "transparent",
+                        template: "#= category #: \n #= value# GB"
+                    }
+                },
+                series: [{
+                    type: "pie",
+                    startAngle: 150,
+                    data: [{
+                        category: "Space Used",
+                        value: Math.round({{storageUsage/1024/1024/1024}} * 100) / 100,
+                        color: "#FF780D",
+                    },{
+                        category: "Space Available",
+                        value: Math.round({{(storageLimit-storageUsage)/1024/1024/1024}} * 100) / 100,
+                        color: "#00D324"
+                    }]
+                }],
+                tooltip: {
+                    visible: true,
+                    format: "{0} GB"
+                }
+            });
+        }
+
+        $(document).ready(createChart);
+    </script>
+{% endblock %}
