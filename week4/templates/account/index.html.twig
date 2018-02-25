@@ -1,0 +1,14 @@
+{# templates/default/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h2>Account</h2>
+    <span>Welcome, {{givenName}}</span>
+    <span>Email: {{email}}</span>
+    <span>Storage Available: {{(storageLimit-storageUsage)/1024/1024/1024}}</span>
+    <span>Storage Usage: {{storageUsage/1024/1024/1024}}</span>
+    <div><a href="/account/logout">Logout</a>
+{% endblock %}
