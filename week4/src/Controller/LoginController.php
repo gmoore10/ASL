@@ -27,7 +27,7 @@ class LoginController extends Controller
         $session->set('appName', "School Github Client");
         $session->set('clientId', "955493671398-tfqdpdjqih875eucq609c1vnc28bpfui.apps.googleusercontent.com");
         $session->set('clientSecret', "F53CZXUy7LfzDIRY-rUZcv2n");
-        $session->set('redirectUri', "http://localhost:8000/login/redirect");
+        $session->set('redirectUri', "http://localhost/login/redirect");
         $session->set('scopes', array("email", "https://www.googleapis.com/auth/drive.readonly"));
         $session->set('hostedDomain', "http://localhost");
 
